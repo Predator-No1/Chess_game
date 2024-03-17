@@ -84,13 +84,13 @@ whiteknight = pygame.image.load('images/white knight.png')
 whiteknight = pygame.transform.scale(whiteknight, (40,40))
 whiteknightSmall = pygame.transform.scale(whiteknight, (25,25))
 
-whiteimages = [whitepawn, whiterook, whiteKing, whiteQueen, whitebishop, whiteknight]
-whiteimagessmall = [whitepawnSmall, whiterookSmall, whiteQueenSmall, whiteKingSmall, whitebishopSmall, whiteknightSmall]
+whiteimages = [whiterook, whiteknight, whitebishop, whiteKing, whiteQueen, whitepawn]
+whiteimagessmall = [whiterookSmall, whiteknightSmall, whitebishopSmall, whiteKingSmall, whiteQueenSmall, whitepawnSmall]
 
-blackimages = [blackpawn, blackQueen, blackKing, blackrook, blackbishop, blackknight]
-blackimagessmall = [blackpawn, blackQueenSmall, blackknightSmall, blackrookSmall, blackrookSmall, blackknightSmall]
+blackimages = [blackrook, blackknight, blackbishop, blackKing, blackQueen, blackpawn]
+blackimagessmall = [blackrookSmall, blackknightSmall, blackbishopSmall, blackKingSmall, blackQueenSmall, blackpawnSmall]
 
-piece_list = ['pawn', 'king', 'queen', 'rook', 'bishop', 'knight']
+piece_list = ['rook', 'knight', 'bishop', 'king', 'queen', 'pawn']
 #main game loop
 
 
@@ -99,9 +99,13 @@ def draw_board():
         column = i % 4
         row = i // 4
         if row % 2 == 0:
-            pygame.draw.rect(screen, 'light gray', [300 - (column * 100), row * 50, 50, 50])
+            pygame.draw.rect(screen, 'brown', [300 - (column * 100), row * 50, 50, 50])
         else:
-            pygame.draw.rect(screen, 'light gray', [350 - (column * 100), row * 50, 50, 50])
+            pygame.draw.rect(screen, 'brown', [350 - (column * 100), row * 50, 50, 50])
+        pygame.draw.rect(screen, 'white', [0, 400, WIDTH, 50])
+        pygame.draw.rect(screen, 'black', [400, 0, 50, HEIGHT-50])
+        pygame.draw.rect(screen, 'gold', [0, 400, WIDTH, 50], 3)
+        pygame.draw.rect(screen, 'gold', [400, 0, 200, HEIGHT-50], 3)
 continuous = True
 
 while continuous:
