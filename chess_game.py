@@ -4,8 +4,8 @@ of the  code that is what we need to comment almost every where to avoid amgigui
 
 pygame.init()
 
-WIDTH = 600
-HEIGHT = 500
+WIDTH = 500
+HEIGHT = 450
 
 #setting screen size
 screen = pygame.display.set_mode([WIDTH,HEIGHT]) 
@@ -35,12 +35,80 @@ selection = 100
 
 valid_moves = []
 
+#inserting all the game pieces 
+blackQueen = pygame.image.load('images/black queen.png')
+blackQueen = pygame.transform.scale(blackQueen, (40,40))
+blackQueenSmall = pygame.transform.scale(blackQueen, (25,25))
+
+whiteQueen = pygame.image.load('images/white queen.png')
+whiteQueen = pygame.transform.scale(whiteQueen, (40,40))
+whiteQueenSmall = pygame.transform.scale(whiteQueen, (25,25))
+
+blackKing = pygame.image.load('images/black king.png')
+blackKing = pygame.transform.scale(blackKing, (40,40))
+blackKingSmall = pygame.transform.scale(blackKing, (25,25))
+
+whiteKing = pygame.image.load('images/white king.png')
+whiteKing = pygame.transform.scale(whiteKing, (40,40))
+whiteKingSmall = pygame.transform.scale(whiteKing, (25,25))
+
+blackbishop = pygame.image.load('images/black bishop.png')
+blackbishop = pygame.transform.scale(blackbishop, (40,40))
+blackbishopSmall = pygame.transform.scale(blackbishop, (25,25))
+
+whitebishop = pygame.image.load('images/white bishop.png')
+whitebishop = pygame.transform.scale(whitebishop, (40,40))
+whitebishopSmall = pygame.transform.scale(whitebishop, (25,25))
+
+blackpawn = pygame.image.load('images/black pawn.png')
+blackpawn = pygame.transform.scale(blackpawn, (40,40))
+blackpawnSmall = pygame.transform.scale(blackpawn, (25,25))
+
+whitepawn = pygame.image.load('images/white pawn.png')
+whitepawn = pygame.transform.scale(whitepawn, (40,40))
+whitepawnSmall = pygame.transform.scale(whitepawn, (25,25))
+
+blackrook = pygame.image.load('images/black rook.png')
+blackrook = pygame.transform.scale(blackrook, (40,40))
+blackrookSmall = pygame.transform.scale(blackrook, (25,25))
+
+whiterook = pygame.image.load('images/white rook.png')
+whiterook = pygame.transform.scale(whiterook, (40,40))
+whiterookSmall = pygame.transform.scale(whiterook, (25,25))
+
+blackknight = pygame.image.load('images/black knight.png')
+blackknight = pygame.transform.scale(blackknight, (40,40))
+blackknightSmall = pygame.transform.scale(blackknight, (25,25))
+
+whiteknight = pygame.image.load('images/white knight.png')
+whiteknight = pygame.transform.scale(whiteknight, (40,40))
+whiteknightSmall = pygame.transform.scale(whiteknight, (25,25))
+
+whiteimages = [whitepawn, whiterook, whiteKing, whiteQueen, whitebishop, whiteknight]
+whiteimagessmall = [whitepawnSmall, whiterookSmall, whiteQueenSmall, whiteKingSmall, whitebishopSmall, whiteknightSmall]
+
+blackimages = [blackpawn, blackQueen, blackKing, blackrook, blackbishop, blackknight]
+blackimagessmall = [blackpawn, blackQueenSmall, blackknightSmall, blackrookSmall, blackrookSmall, blackknightSmall]
+
+piece_list = ['pawn', 'king', 'queen', 'rook', 'bishop', 'knight']
 #main game loop
+
+
+def draw_board():
+    for i in range(32):
+        column = i % 4
+        row = i // 4
+        if row % 2 == 0:
+            pygame.draw.rect(screen, 'light gray', [300 - (column * 100), row * 50, 50, 50])
+        else:
+            pygame.draw.rect(screen, 'light gray', [350 - (column * 100), row * 50, 50, 50])
 continuous = True
 
 while continuous:
     timer.tick(fps)
     screen.fill('dark gray') 
+    
+    draw_board()
     
     #this is where we will handle the event   
     for event in pygame.event.get():
